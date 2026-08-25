@@ -1,0 +1,37 @@
+
+public class Gerente extends FuncionarioCLT {
+	private int tamanhoEquipe;
+	private double percentualBonus;
+	
+	
+	public Gerente (String nome, String matricula, double salarioBase, String dataAdmissao,double valeTransporte, double valeAlimentacao,
+			int tamanhoEquipe, double percentualBonus) {
+		
+		super( nome, matricula, salarioBase, dataAdmissao, valeTransporte, valeAlimentacao);
+		
+		this.percentualBonus = percentualBonus;
+		this.tamanhoEquipe = tamanhoEquipe;
+		
+	}
+		
+	@Override
+	public double calcularSalario() {
+			
+		double bonus = getSalarioBase() * percentualBonus;
+			
+		return super.calcularSalario() + bonus;
+					
+	}
+		
+	public double calcularDesconto() {
+		
+		double desconto = super.calcularDesconto();
+		
+		if(tamanhoEquipe > 10) {
+			desconto += 100;
+		}
+		
+		return desconto;
+		
+	}	
+}
